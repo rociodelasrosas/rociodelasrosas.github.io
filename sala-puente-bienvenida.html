@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienvenid@ a Sala Puente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f3ece2;
+    --cream-2: #ece2d4;
+    --sage: #6f7d54;
+    --sage-deep: #5c6845;
+    --clay: #a9694f;
+    --clay-deep: #8f5540;
+    --ink: #2c241e;
+    --body-gray: #5a534b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    color: var(--body-gray);
+    background: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* soft floating botanical shapes */
+  .botanical {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0.22;
+    z-index: 0;
+  }
+  .bot-1 { top: -40px; left: -30px; width: 180px; transform: rotate(-15deg); }
+  .bot-2 { bottom: -60px; right: -40px; width: 220px; transform: rotate(10deg) scaleX(-1); }
+  .bot-3 { top: 45%; right: -50px; width: 140px; opacity: 0.15; }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 64px 28px 90px;
+  }
+
+  .bridge-mark {
+    display: block;
+    width: 92px;
+    height: auto;
+    margin: 0 auto 22px;
+  }
+
+  h1.script {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2.3rem, 8vw, 3.1rem);
+    text-align: center;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  h1.script .accent { color: var(--clay); }
+
+  .eyebrow {
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--clay);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .card {
+    background: var(--cream-2);
+    border: 1px solid rgba(44, 36, 30, 0.08);
+    border-radius: 4px;
+    padding: 38px 34px;
+    margin-bottom: 26px;
+  }
+
+  p {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    margin-bottom: 16px;
+    color: var(--body-gray);
+  }
+  p:last-child { margin-bottom: 0; }
+
+  h2.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .feature-list { list-style: none; margin: 8px 0 0; }
+  .feature-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(44, 36, 30, 0.1);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list .ico { font-size: 1.3rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+
+  .cta-block {
+    text-align: center;
+    margin: 46px 0 40px;
+  }
+
+  .cta-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 20px;
+  }
+
+  .access-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--clay-deep);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.92rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 36px;
+    border-radius: 3px;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .access-btn:hover {
+    background: var(--ink);
+    transform: translateY(-1px);
+  }
+  .access-btn:active { transform: translateY(0); }
+  .access-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  .hint {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--body-gray);
+    margin-top: 18px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .quote-block {
+    background: var(--sage);
+    color: var(--cream);
+    border-radius: 4px;
+    padding: 46px 30px;
+    margin: 46px 0 40px;
+  }
+  .quote {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--cream);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .signoff {
+    text-align: center;
+    margin-top: 40px;
+  }
+  .signoff p {
+    text-align: center;
+    color: var(--body-gray);
+    font-size: 0.98rem;
+  }
+  .signoff .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: var(--clay);
+    margin-top: 8px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card, .cta-block { animation: rise 0.8s ease both; }
+    .card:nth-of-type(2) { animation-delay: 0.08s; }
+    .card:nth-of-type(3) { animation-delay: 0.16s; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .access-btn:focus-visible {
+    outline: 3px solid var(--sage-deep);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<svg class="botanical bot-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100 10 C 60 40, 40 90, 60 140 C 75 175, 100 190, 100 190" stroke="#7c8a63" stroke-width="2" fill="none" opacity="0.6"/>
+  <ellipse cx="70" cy="55" rx="16" ry="8" fill="#adb896" opacity="0.55" transform="rotate(-30 70 55)"/>
+  <ellipse cx="55" cy="90" rx="18" ry="9" fill="#adb896" opacity="0.5" transform="rotate(-10 55 90)"/>
+  <ellipse cx="75" cy="125" rx="15" ry="8" fill="#adb896" opacity="0.55" transform="rotate(20 75 125)"/>
+</svg>
+
+<svg class="botanical bot-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100 10 C 60 40, 40 90, 60 140 C 75 175, 100 190, 100 190" stroke="#a9694f" stroke-width="2" fill="none" opacity="0.4"/>
+  <ellipse cx="70" cy="55" rx="16" ry="8" fill="#e8b4a8" opacity="0.5" transform="rotate(-30 70 55)"/>
+  <ellipse cx="55" cy="90" rx="18" ry="9" fill="#e8b4a8" opacity="0.45" transform="rotate(-10 55 90)"/>
+  <ellipse cx="75" cy="125" rx="15" ry="8" fill="#e8b4a8" opacity="0.5" transform="rotate(20 75 125)"/>
+</svg>
+
+<svg class="botanical bot-3" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
+  <path d="M50 5 C 30 60, 30 140, 50 195" stroke="#7c8a63" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <circle cx="40" cy="40" r="6" fill="#adb896" opacity="0.4"/>
+  <circle cx="55" cy="90" r="5" fill="#adb896" opacity="0.35"/>
+  <circle cx="38" cy="150" r="6" fill="#adb896" opacity="0.4"/>
+</svg>
+
+<div class="wrap">
+
+  <p class="eyebrow" style="margin-bottom: 8px;">Método Puente</p>
+
+  <h1 class="script">¡Bienvenid@ a <span class="accent">Sala Puente</span>!</h1>
+  <p class="eyebrow">Qué alegría que hayas decidido sumarte</p>
+
+  <div class="card">
+    <p>Acabás de dar un paso importante: elegiste invertir en vos, en tu crecimiento y en el camino hacia la vida que deseás construir.</p>
+  </div>
+
+  <div class="card">
+    <h2 class="section-title">🌉 ¿Qué es Sala Puente?</h2>
+    <p>Sala Puente es una comunidad de acompañamiento donde nos sostenemos, nos inspiramos y nos animamos mutuamente a dar pasos concretos hacia nuestros sueños.</p>
+    <p>Creo profundamente que una persona puede cambiar una vida, pero una comunidad puede sostener esa transformación.</p>
+    <p>Por eso, este no es un espacio para acumular información. Es un espacio para avanzar.</p>
+  </div>
+
+  <div class="card">
+    <h2 class="section-title">¿Qué vas a encontrar?</h2>
+    <ul class="feature-list">
+      <li><span class="ico">🌱</span><span>Encuentros en vivo para profundizar y crecer juntos.</span></li>
+      <li><span class="ico">💬</span><span>Propuestas y reflexiones que acompañarán tu proceso durante el mes.</span></li>
+      <li><span class="ico">🤝</span><span>Una comunidad donde compartir experiencias, celebrar avances y encontrar apoyo.</span></li>
+      <li><span class="ico">🧭</span><span>Herramientas para transformar intención en acción.</span></li>
+    </ul>
+  </div>
+
+  <div class="cta-block">
+    <p class="cta-label">Tu siguiente paso</p>
+    <a class="access-btn" href="https://chat.whatsapp.com/FDUn7D8fxHXIznXI7z9bZF" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.13h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.4c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.25-8.23 8.25zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z"/></svg>
+      Ingresar al grupo privado
+    </a>
+    <p class="hint">Vas a ser redirigid@ a WhatsApp</p>
+  </div>
+
+  <div class="card">
+    <p>Cuando entres, buscá el mensaje fijado. Ahí vas a encontrar toda la información para comenzar y una invitación para presentarte.</p>
+  </div>
+
+  <div class="card">
+    <h2 class="section-title">Un pedido importante</h2>
+    <p>Este es un espacio basado en el respeto, la escucha y la confianza.</p>
+    <p>Te invito a cuidar las historias de los demás con la misma dedicación con la que te gustaría que cuidaran la tuya.</p>
+  </div>
+
+  <div class="quote-block">
+    <p class="quote">"Cuando te rodeás de personas que se animan, vos también te animás. Esa es la fuerza de la red."</p>
+  </div>
+
+  <div class="signoff">
+    <p>Gracias por estar acá.</p>
+    <p>Estoy muy feliz de comenzar este camino junto a vos.</p>
+    <p>Con cariño,</p>
+    <div class="name">Rocío 🌉</div>
+  </div>
+
+</div>
+
+</body>
+</html>
