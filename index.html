@@ -1034,6 +1034,124 @@
     window.addEventListener('resize', checkWidth);
     checkWidth();
   </script>
+<!-- Banner flotante Sala Semilla -->
+<div id="semilla-banner" onclick="document.getElementById('semilla-modal').style.display='flex'">
+  📖 Descubrí "Sala Semilla" — tu ebook de transformación interior →
+</div>
 
+<!-- Popup / Modal -->
+<div id="semilla-modal">
+  <div class="semilla-modal-content">
+    <span class="semilla-close" onclick="document.getElementById('semilla-modal').style.display='none'">&times;</span>
+    <div class="semilla-modal-body">
+      <img src="sala-semilla-tapa.jpg" alt="Tapa del ebook Sala Semilla" class="semilla-cover">
+      <div class="semilla-text">
+        <h2>Sala Semilla</h2>
+        <p class="semilla-subtitle">Un Espacio de Conexión con la Potencia Original del Ser</p>
+        <p>Un eBook que te guía a redescubrir la potencia original que Dios sembró en vos. A través de la analogía de la semilla, la naturaleza y principios bíblicos, aprenderás a reconocer tus recursos, renovar tu manera de pensar y cultivar una vida con propósito.</p>
+        <a href="https://hotmart.com/es/marketplace/productos/manual-sala-semilla/Y106956767X?sck=HOTMART_SITE_APP" target="_blank" class="semilla-cta">Quiero mi ebook</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+#semilla-banner {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #d8c9f0, #b8e0c8, #f5efe0);
+  color: #2e2a20;
+  padding: 14px 22px;
+  border-radius: 40px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 9998;
+  transition: transform 0.2s ease;
+}
+#semilla-banner:hover { transform: scale(1.05); }
+
+#semilla-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.55);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.semilla-modal-content {
+  background: linear-gradient(160deg, #f5efe0, #e4ecdf);
+  border-radius: 16px;
+  max-width: 720px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.semilla-close {
+  position: absolute;
+  top: 12px; right: 18px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #2e2a20;
+}
+.semilla-modal-body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  gap: 24px;
+}
+.semilla-cover {
+  width: 220px;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  align-self: flex-start;
+  margin: 0 auto;
+}
+.semilla-text { flex: 1; min-width: 240px; }
+.semilla-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  margin: 0 0 6px;
+  color: #2e2a20;
+}
+.semilla-subtitle {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  color: #5a5340;
+  margin-bottom: 14px;
+}
+.semilla-text p {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #3a3528;
+}
+.semilla-cta {
+  display: inline-block;
+  margin-top: 16px;
+  background: #2e2a20;
+  color: #f5efe0;
+  padding: 12px 26px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+.semilla-cta:hover { background: #4a4433; }
+
+@media (max-width: 480px) {
+  .semilla-modal-body { flex-direction: column; align-items: center; text-align: center; }
+}
+</style>
 </body>
 </html>
